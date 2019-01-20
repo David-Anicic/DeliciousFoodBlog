@@ -1,0 +1,26 @@
+{
+  "name": "deliciousfoodblog",
+  "version": "1.0.0",
+  "description": "I am creating web site where we all can share our favorite food recipes.",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "sqlite3": "^4.0.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/David-Anicic/DeliciousFoodBlog.git"
+  },
+  "author": "David Anicic",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/David-Anicic/DeliciousFoodBlog/issues"
+  },
+  "homepage": "https://github.com/David-Anicic/DeliciousFoodBlog#readme"
+}
