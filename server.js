@@ -1,3 +1,9 @@
+// Sema baze
+
+// recept - rowid, naziv, opis, photo
+// sastojak - rowid, naziv
+// receptSastojci - rowid, idRecepta, idSastojka, kolicina, mera
+
 var express = require('./node_modules/express');
 var app = express();
 var sqlite3 = require('./node_modules/sqlite3');
@@ -36,16 +42,36 @@ app.post('/dodaj_recept', urlencodedParser, function(req, res)
     {
         //console.log(req.body);
         var opis = req.body.opis === "" ? null : req.body.opis;
-        db.run("INSERT INTO recept(naziv, opis) VALUES(?,?)", req.body.naziv, opis);
-        res.send("alert('Uspesno dodat recept!');");
+        db.run("INSERT INTO recept(naziv, opis) VALUES(?,?)", req.body.naziv, opis, function(err)
+        {
+            if (err)
+                console.log(err);
+            else
+                res.send("alert('Uspesno dodat recept!');");
+        });
     }
 });
 
 app.post('/obrisi_recept', urlencodedParser, function(req, res)
 {
-    db.run("DELETE FROM receptSastojci WHERE idRecepta = '" + req.body.idRecepta + "'");
-    db.run("DELETE FROM recept WHERE rowid = '" + req.body.idRecepta + "'");
-    res.send("alert('Uspesno obrisano!');");
+    db.serialize(function()
+    {
+        db.run("DELETE FROM receptSastojci WHERE idRecepta = '" + req.body.idRecepta + "'", function(err)
+        {
+            if (err)
+                console.log(err);
+            else
+            {    
+                db.run("DELETE FROM recept WHERE rowid = '" + req.body.idRecepta + "'", function(err)
+                {
+                    if (err)
+                        console.log(err);
+                    else
+                        res.send("alert('Uspesno obrisano!');");
+                });
+            }
+        });
+    });
 });
 
 app.get('/daj_sastojke_za_recept', function(req,res)
@@ -61,26 +87,60 @@ app.get('/daj_sastojke_za_recept', function(req,res)
     });
 });
 
-/*
 app.post('/izmeni_sastojak_recepta', urlencodedParser, function(req, res)
 {
-    if ((req.body.kolicina <= 0) || (req.body.mera === ""))
+    if ((req.body.kolicina === "") || (req.body.mera === ""))
     {
         res.send("alert('Morate uneti vrednost za kolicinu i meru!');");
     }  
     else
     {
         console.log(req.body);
-        db.run("UPDATE receptSastojci SET kolicina = ? , mera = '?' WHERE rowid = '?'", req.body.kolicina, req.body.mera, req.body.rowid);
+        db.run("UPDATE receptSastojci SET kolicina='" + req.body.kolicina + "' , mera='" + req.body.mera + "' WHERE rowid='" + req.body.rowid + "'", function(err)
+        {
+            if (err)
+                console.log(err);
+            else
+                res.send("alert('Uspesno ste izmenili sastojak za recept!');");
+        });
     }
 });
-*/
+
+app.post('/izbrisi_sastojak_recepta', urlencodedParser, function(req, res)
+{
+    db.run("DELETE FROM receptSastojci WHERE rowid = '"+ req.body.rowid + "'", function(err)
+    {
+        if (err)
+            console.log(err);
+        else
+            res.send("alert('Uspesno ste obrisali sastojak recepta!');");
+    });
+});
+
+app.post('/dodaj_sastojak_za_recept', urlencodedParser, function(req, res)
+{
+    if (req.body.idRecepta === "" || req.body.idSastojka === "" || req.body.kolicina === "" || req.body.mera === "")
+    {
+        res.send("alert('Niste popunili sva polja!');");
+    }
+    else
+    {
+        console.log(req.body);
+        db.run("INSERT INTO receptSastojci(idRecepta, idSastojka, kolicina, mera) VALUES(?,?,?,?)", req.body.idRecepta, req.body.idSastojka, req.body.kolicina, req.body.mera, function(err)
+        {
+            if (err)
+                console.log(err);
+            else
+                res.send("alert('Uspesno ste dodali sastojak za recept!');");
+        });
+    }
+})
 
 //--------------------- SERVER --------------------------
 
 var server = app.listen(3000, function() {
-    var host = server.address().address;
+    //var host = server.address().address;
     var port = server.address().port;
 
-    console.log("App listening at http://%s:%s", host, port);
+    console.log("App listening at http://127.0.0.1:%s", port);
 });
