@@ -9,7 +9,7 @@
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title -->
-    <title>Delicious - Food Blog Template | Receipe Post</title>
+    <title>Sastojci za recept</title>
 
     <!-- Favicon -->
     <link rel="icon" href="img/core-img/favicon.ico">
@@ -19,7 +19,7 @@
 
 </head>
 
-<body>
+<body onload="popuniSelect()">
     <!-- Preloader -->
     <div id="preloader">
         <i class="circle-preloader"></i>
@@ -198,7 +198,7 @@
             <div class="row h-100 align-items-center">
                 <div class="col-12">
                     <div class="breadcumb-text text-center">
-                        <h2>Recipe</h2>
+                        <h2>Sastojci za recept <span id='nazivRecepta'></span></h2>
                     </div>
                 </div>
             </div>
@@ -209,6 +209,7 @@
     <div class="receipe-post-area section-padding-80">
 
         <!-- Receipe Post Search -->
+        <!--
         <div class="receipe-post-search mb-80">
             <div class="container">
                 <form action="#" method="post">
@@ -242,7 +243,6 @@
             </div>
         </div>
 
-        <!-- Receipe Slider -->
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -255,7 +255,6 @@
             </div>
         </div>
 
-        <!-- Receipe Content Area -->
         <div class="receipe-content-area">
             <div class="container">
 
@@ -288,76 +287,63 @@
 
                 <div class="row">
                     <div class="col-12 col-lg-8">
-                        <!-- Single Preparation Step -->
                         <div class="single-preparation-step d-flex">
                             <h4>01.</h4>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nec varius dui. Suspendisse potenti. Vestibulum ac pellentesque tortor. Aenean congue sed metus in iaculis. Cras a tortor enim. Phasellus posuere vestibulum ipsum, eget lobortis purus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. </p>
                         </div>
-                        <!-- Single Preparation Step -->
                         <div class="single-preparation-step d-flex">
                             <h4>02.</h4>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nec varius dui. Suspendisse potenti. Vestibulum ac pellentesque tortor. Aenean congue sed metus in iaculis. Cras a tortor enim. Phasellus posuere vestibulum ipsum, eget lobortis purus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. </p>
                         </div>
-                        <!-- Single Preparation Step -->
                         <div class="single-preparation-step d-flex">
                             <h4>03.</h4>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nec varius dui. Suspendisse potenti. Vestibulum ac pellentesque tortor. Aenean congue sed metus in iaculis. Cras a tortor enim. Phasellus posuere vestibulum ipsum, eget lobortis purus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. </p>
                         </div>
-                        <!-- Single Preparation Step -->
                         <div class="single-preparation-step d-flex">
                             <h4>04.</h4>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nec varius dui. Suspendisse potenti. Vestibulum ac pellentesque tortor. Aenean congue sed metus in iaculis. Cras a tortor enim. Phasellus posuere vestibulum ipsum, eget lobortis purus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. </p>
                         </div>
                     </div>
 
-                    <!-- Ingredients -->
                     <div class="col-12 col-lg-4">
                         <div class="ingredients">
                             <h4>Ingredients</h4>
 
-                            <!-- Custom Checkbox -->
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" id="customCheck1">
                                 <label class="custom-control-label" for="customCheck1">4 Tbsp (57 gr) butter</label>
                             </div>
 
-                            <!-- Custom Checkbox -->
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" id="customCheck2">
                                 <label class="custom-control-label" for="customCheck2">2 large eggs</label>
                             </div>
 
-                            <!-- Custom Checkbox -->
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" id="customCheck3">
                                 <label class="custom-control-label" for="customCheck3">2 yogurt containers granulated sugar</label>
                             </div>
 
-                            <!-- Custom Checkbox -->
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" id="customCheck4">
                                 <label class="custom-control-label" for="customCheck4">1 vanilla or plain yogurt, 170g container</label>
                             </div>
 
-                            <!-- Custom Checkbox -->
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" id="customCheck5">
                                 <label class="custom-control-label" for="customCheck5">2 yogurt containers unbleached white flour</label>
                             </div>
 
-                            <!-- Custom Checkbox -->
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" id="customCheck6">
                                 <label class="custom-control-label" for="customCheck6">1.5 yogurt containers milk</label>
                             </div>
 
-                            <!-- Custom Checkbox -->
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" id="customCheck7">
                                 <label class="custom-control-label" for="customCheck7">1/4 tsp cinnamon</label>
                             </div>
 
-                            <!-- Custom Checkbox -->
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" id="customCheck8">
                                 <label class="custom-control-label" for="customCheck8">1 cup fresh blueberries </label>
@@ -402,6 +388,23 @@
             </div>
         </div>
     </div>
+    -->
+
+
+    <!-- Combobox za izbor recepta -->
+    <div style="text-align: center;">
+            <h3 style="font-size: 22px; padding-top: 15px; background-image: none; margin-left: 100px; margin-bottom: 20px;">Izaberite recept za prikaz sastojaka:</h3>
+            <div class="select" style="width: 180px; margin: auto;">
+              <select id="slct" onchange="popuniTabelu(this.value)" style="display: block;">
+              </select>
+            </div>
+    </div>
+
+    <!-- Tabela za prikaz sastojaka -->
+    <h3 style='margin-left: 740px;'>Prikaz svih sastojaka recepta <span id="nazivRecepta1"></span></h3>
+    <table id="tabela"></table>
+
+
 
     <!-- ##### Follow Us Instagram Area Start ##### -->
     <div class="follow-us-instagram">
@@ -519,6 +522,136 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script src="js/plugins/plugins.js"></script>
     <!-- Active js -->
     <script src="js/active.js"></script>
+
+    <script>
+        // popunjavamo select tag sa receptima
+        function popuniSelect()
+        {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function()
+            {
+                if (this.readyState == 4 && this.status == 200)
+                {
+                    // JSON fajl this.responseText pretvarmo u niz odgovarajucih vrednosti
+                    //console.log(this.responseText);
+                    recepti = JSON.parse(this.responseText);
+
+                    // popunjavamo select
+                    html = "<option selected disabled>Izaberite recept</option>";
+
+                    // dodajemo opcije
+                    for(var i = 0; i < recepti.length; i++)
+                    {
+                        html += "<option value='"+ recepti[i].rowid +"'>"+ recepti[i].naziv +"</option>";
+                    }
+
+                    //console.log(html);
+                    document.getElementById("slct").innerHTML = html;
+                    document.getElementById("slct").style.display = "block";
+                    //console.log(document.getElementById('slct'));
+                }
+            };
+
+            // saljemo zahtev
+            xhttp.open("GET", "svi_recepti", true);
+            xhttp.send();
+        }
+
+        // funkcija koja popunjava tabelu na osnvu izabranog recepta
+        function popuniTabelu(id)
+        {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function()
+            {
+                if (this.readyState == 4 && this.status == 200)
+                {
+                    // JSON fajl this.responseText pretvarmo u niz odgovarajucih vrednosti
+                    sastojci = JSON.parse(this.responseText);
+
+                    // popunjavamo tabelu
+                    html = "";
+                    html += "<thead><tr><th>Naziv sastojka</th><th>Kolicina</th><th>Mera</th><th></th><th></th></tr></thead>";
+                    html += "<tbody>";
+
+                    for(var i = 0; i < sastojci.length; i++)
+                    {
+                        html += "<tr>";
+                        html += "<td><input type='text' id='naziv' value='"+ sastojci[i].nazivSastojka +"'></td>";
+                        html += "<td><input type='text' id='kolicina' value='"+ sastojci[i].kolicina +"'></td>";
+                        html += "<td><input type='text' id='mera' value='"+ sastojci[i].mera +"'></td>";
+                        html += "<td><button onClick='izmeni("+ sastojci[i].rowid +", "+ id +")'>Izmeni</button></td>";
+                        html += "<td><button onClick='obrisi("+ sastojci[i].rowid +","+ id +")'>Obrisi</button></td>";
+                        html += "</tr>";
+                    }
+
+                    html += "</tbody>";
+
+                    document.getElementById("tabela").innerHTML = html;
+
+                    if (sastojci.length > 0)
+                    {
+                        document.getElementById("nazivRecepta").innerHTML = sastojci[0].nazivRecepta;
+                        document.getElementById("nazivRecepta1").innerHTML = sastojci[0].nazivRecepta;
+                    }
+                    else
+                    {
+                        document.getElementById("nazivRecepta").innerHTML = "";
+                        document.getElementById("nazivRecepta1").innerHTML = "";
+                    }
+                }
+            };
+
+            // saljemo zahtev
+            xhttp.open("GET", "daj_sastojke_za_recept?idRecepta=" + id, true);
+            xhttp.send();
+        }
+
+        function obrisi(idSastojkaZaBrisanje, idRecepta)
+        {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function()
+            {
+                if (this.readyState == 4 && this.status == 200)
+                {
+                    // izvrsi alert() funckciju vracenu od strane nodeJs servera
+                    eval(this.responseText);
+                    // osvezi tabelu - posalji GET zahtev za svim receptima
+                    popuniTabelu(idRecepta);
+                }
+            };
+
+            // posalji zahtev za brisanjem
+            xhttp.open("POST", "izbrisi_sastojak_recepta", true);
+            xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            xhttp.send("rowid=" + idSastojkaZaBrisanje);
+        }
+
+        function izmeni(idSastojkaZaIzmenu, idRecepta)
+        {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function()
+            {
+                if (this.readyState == 4 && this.status == 200)
+                {
+                    // izvrsi alert() funckciju vracenu od strane nodeJs servera
+                    eval(this.responseText);
+                    // osvezi tabelu - posalji GET zahtev za svim receptima
+                    popuniTabelu(idRecepta);
+                }
+            };
+
+            // uzmi podatke
+            kolicina = document.getElementById("kolicina").value;
+            kolicina = parseInt(kolicina);
+            mera = document.getElementById("mera").value;
+
+            console.log(idSastojkaZaIzmenu, idRecepta, kolicina, mera);
+            // posalji zahtev za brisanjem
+            xhttp.open("POST", "izmeni_sastojak_recepta", true);
+            xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            xhttp.send("rowid=" + idSastojkaZaIzmenu + "&kolicina=" + kolicina + "&mera=" + mera);
+        }
+    </script>
 </body>
 
 </html>
