@@ -127,7 +127,7 @@ app.post('/izbrisi_sastojak_recepta', urlencodedParser, function(req, res)
 
 app.post('/dodaj_sastojak_za_recept', urlencodedParser, function(req, res)
 {
-    if (req.body.idRecepta === "" || req.body.idSastojka === "" || req.body.kolicina === "" || req.body.mera === "")
+    if (req.body.idRecepta === "Izaberite recept" || req.body.idRecepta === "" || req.body.idSastojka === "" || req.body.kolicina === "" || req.body.mera === "")
     {
         res.send("alert('Niste popunili sva polja!');");
     }
@@ -145,7 +145,7 @@ app.post('/dodaj_sastojak_za_recept', urlencodedParser, function(req, res)
 
 //--------------------- SERVER --------------------------
 
-var server = app.listen(3000, function() {
+var server = app.listen(8081, function() {
     var port = server.address().port;
 
     console.log("App listening at http://localhost:%s", port);

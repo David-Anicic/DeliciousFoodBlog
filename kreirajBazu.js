@@ -37,7 +37,7 @@ db.serialize(function()
 
     // Unos u bazu
     var stmt = db.prepare("INSERT INTO recept(naziv, opis, photo) VALUES(?,?,?)");
-    stmt.run("Piletina sa šampinjonima","Ako volite piletinu, ali i šampinjone onda je ovo pravo jelo za vas!", "");
+    stmt.run("Pržena piletina","Ako volite piletinu, ali i šampinjone onda je ovo pravo jelo za vas!", "");
     stmt.run("Grčka salata","Jako poznata salata širom sveta!", "");
     stmt.run("Princes krofne","Uz naš recept za princes krofne uživaćete u njima uveravamo vas!", "");
     stmt.finalize();

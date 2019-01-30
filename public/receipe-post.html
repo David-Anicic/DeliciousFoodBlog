@@ -55,9 +55,9 @@
                         <div class="breaking-news">
                             <div id="breakingNewsTicker" class="ticker">
                                 <ul>
-                                    <li><a href="#">Hello You!</a></li>
-                                    <li><a href="#">Welcome to Delicious Food Blog.</a></li>
-                                    <li><a href="#">Enjoy our blog!</a></li>
+                                    <li><a href="#">Zdravo gost!</a></li>
+                                    <li><a href="#">Dobro došli na Delicious Food Blog.</a></li>
+                                    <li><a href="#">Uživajte u našem blogu!</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -126,7 +126,7 @@
     <!-- Combobox za izbor recepta -->
     <div style="text-align: center;">
             <h3 style="margin: auto; margin-top: 20px; margin-bottom: 20px;">Izaberite recept za prikaz sastojaka:</h3>
-            <div class="select" style="width: 180px; margin: auto;">
+            <div class="select" style="width: 160px; margin: auto;">
               <select id="slct" onchange="popuniTabelu(this.value); popuniSelectSastojci(this.value);" style="display: block;">
               </select>
             </div>
@@ -324,7 +324,9 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                     eval(this.responseText);
 
                     // osvezi tabelu - posalji GET zahtev za svim receptima
-                    popuniTabelu(idRecepta);
+                    // ali samo ukoliko je izabran neki recept!
+                    if (idRecepta !== "Izaberite recept")
+                        popuniTabelu(idRecepta);
 
                     // obrisi formu za unos
                     popuniSelectSastojci(idRecepta);
