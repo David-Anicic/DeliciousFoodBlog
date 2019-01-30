@@ -32,15 +32,25 @@ app.get('/svi_recepti', function(req, res)
     });
 });
 
+app.get('/svi_sastojci', function(req, res)
+{
+    db.all("select rowid, * from sastojak where rowid not in (select idSastojka from receptSastojci where idRecepta = '"+ req.query.idRecepta +"' )", function(err, rows)
+    {
+        if (err)
+            console.log(err);
+        else
+            res.send(JSON.stringify(rows));
+    });
+});
+
 app.post('/dodaj_recept', urlencodedParser, function(req, res)
 {
     if (req.body.naziv === "")
     {
-        res.send("alert('Niste popunili polje za naziv recepta');")
+        res.send("alert('Niste popunili polje za naziv recepta');");
     }
     else
     {
-        //console.log(req.body);
         var opis = req.body.opis === "" ? null : req.body.opis;
         db.run("INSERT INTO recept(naziv, opis) VALUES(?,?)", req.body.naziv, opis, function(err)
         {
@@ -77,7 +87,6 @@ app.post('/obrisi_recept', urlencodedParser, function(req, res)
 app.get('/daj_sastojke_za_recept', function(req,res)
 {
     var id = req.query.idRecepta;
-    console.log(id);
     db.all("SELECT rs.rowid, rs.kolicina, rs.mera, r.naziv nazivRecepta, r.opis, s.naziv nazivSastojka FROM receptSastojci rs JOIN recept r ON rs.idRecepta = r.rowid JOIN sastojak s ON rs.idSastojka = s.rowid WHERE rs.idRecepta = "+ id +"", function(err,rows)
     {
         if (err)
@@ -95,7 +104,6 @@ app.post('/izmeni_sastojak_recepta', urlencodedParser, function(req, res)
     }  
     else
     {
-        console.log(req.body);
         db.run("UPDATE receptSastojci SET kolicina='" + req.body.kolicina + "' , mera='" + req.body.mera + "' WHERE rowid='" + req.body.rowid + "'", function(err)
         {
             if (err)
@@ -125,7 +133,6 @@ app.post('/dodaj_sastojak_za_recept', urlencodedParser, function(req, res)
     }
     else
     {
-        console.log(req.body);
         db.run("INSERT INTO receptSastojci(idRecepta, idSastojka, kolicina, mera) VALUES(?,?,?,?)", req.body.idRecepta, req.body.idSastojka, req.body.kolicina, req.body.mera, function(err)
         {
             if (err)
@@ -139,8 +146,7 @@ app.post('/dodaj_sastojak_za_recept', urlencodedParser, function(req, res)
 //--------------------- SERVER --------------------------
 
 var server = app.listen(3000, function() {
-    //var host = server.address().address;
     var port = server.address().port;
 
-    console.log("App listening at http://127.0.0.1:%s", port);
+    console.log("App listening at http://localhost:%s", port);
 });

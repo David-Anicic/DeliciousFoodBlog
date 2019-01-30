@@ -1157,7 +1157,6 @@ textarea:focus {
         position: absolute;
         width: 100%;
         height: 100%;
-        background-color: rgba(64, 186, 55, 0.9);
         top: 0;
         left: 0;
         z-index: 10;
@@ -1405,7 +1404,7 @@ table {
 	text-shadow: 1px 1px 0px #fff;
 	background:#eaebec;
   margin:auto;
-  margin-top: 20px;
+  margin-top: 50px;
   margin-bottom: 20px;
 	border:#ccc 1px solid;
 
@@ -1418,6 +1417,7 @@ table {
 	box-shadow: 0 1px 2px #d1d1d1;
 }
 table th {
+  color: #40ba37;
 	padding:21px 25px 22px 25px;
 	border-top:1px solid #fafafa;
 	border-bottom:1px solid #e0e0e0;
@@ -1487,7 +1487,7 @@ table button {
   border-radius: 5px;
 }
 
-/* CSS za forum */
+/* CSS za formu */
 
 .form-style-1 {
   margin:10px auto;
@@ -1507,6 +1507,7 @@ table button {
   display:block;
   font-weight: bold;
 }
+
 .form-style-1 input[type=text], 
 .form-style-1 input[type=date],
 .form-style-1 input[type=datetime],
@@ -1529,6 +1530,7 @@ select{
   -o-transition: all 0.30s ease-in-out;
   outline: none;  
 }
+
 .form-style-1 input[type=text]:focus, 
 .form-style-1 input[type=date]:focus,
 .form-style-1 input[type=datetime]:focus,
@@ -1539,10 +1541,10 @@ select{
 .form-style-1 input[type=email]:focus,
 .form-style-1 textarea:focus, 
 .form-style-1 select:focus{
-  -moz-box-shadow: 0 0 8px #88D5E9;
-  -webkit-box-shadow: 0 0 8px #88D5E9;
-  box-shadow: 0 0 8px #88D5E9;
-  border: 1px solid #88D5E9;
+  -moz-box-shadow: 0 0 8px #40ba37;
+  -webkit-box-shadow: 0 0 8px #40ba37;
+  box-shadow: 0 0 10px #40ba37;
+  border: 1px solid #40ba37;
 }
 .form-style-1 .field-divided{
   width: 49%;
@@ -1558,13 +1560,13 @@ select{
   height: 100px;
 }
 .form-style-1 input[type=submit], .form-style-1 input[type=button]{
-  background: #4B99AD;
+  background: #40ba37;
   padding: 8px 15px 8px 15px;
   border: none;
   color: #fff;
 }
 .form-style-1 input[type=submit]:hover, .form-style-1 input[type=button]:hover{
-  background: #4691A4;
+  background: #1c8314;
   box-shadow:none;
   -moz-box-shadow:none;
   -webkit-box-shadow:none;
@@ -1582,9 +1584,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h3 {
-  color: #4585b7;
+  font-size: 35px;
+  color: #40ba37;
   margin: auto;
-  margin-left: 830px;
+  margin-left: 800px;
   margin-top: 70px;
 }
 
@@ -1595,7 +1598,7 @@ h3 {
     position: relative;
     display: block;
     width: 20em;
-    height: 3em;
+    height: 2.7em;
     line-height: 3;
     background: #2c3e50;
     overflow: hidden;
@@ -1625,4 +1628,21 @@ h3 {
 -webkit-transition: .25s all ease;
 -o-transition: .25s all ease;
 transition: .25s all ease;
+}
+
+/*css za dugme*/
+.dugme, .dugmeDodaj {
+  background-color: #40ba37;
+  color: white;
+  padding: 10px;
+}
+
+.dugme:hover, .dugmeDodaj:hover {
+  background-color: #1c8314;
+  color: white;
+}
+
+.dugmeDodaj {
+  font-size: 18px;
+  width: 200px;
 }
