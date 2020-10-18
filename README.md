@@ -1,5 +1,5 @@
 # DeliciousFoodBlog
-Blog for the peoples who enjoy cooking.
+Blog for the people who enjoy cooking.
 
 To start this project you will need node.js v8.9.4 and npm v5.6.0.
 
