@@ -4,8 +4,8 @@
   "description": "I am creating web site where we all can share our favorite food recipes.",
   "main": "server.js",
   "dependencies": {
-    "body-parser": "^1.18.3",
-    "express": "^4.16.4",
+    "body-parser": "^1.20.1",
+    "express": "^4.18.2",
     "sqlite3": "^4.0.6"
   },
   "devDependencies": {},
